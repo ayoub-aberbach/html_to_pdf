@@ -3,9 +3,11 @@ import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 
 import Tabs from './components/Tabs';
-import { API_URL } from './helpers/api_url';
 import TabContent from './components/TabContent';
+
+import { API_URL } from './helpers/api_url';
 import { alertMessage } from './helpers/toastMsgs';
+import DownloadBtn from './components/DownloadBtn';
 
 
 const config = [
@@ -22,8 +24,7 @@ export default function App() {
     const [temp_file, setFile] = useState(null);
     const [activeTab, setActiveTab] = useState("file");
 
-    const handleSendFile = async (e) => {
-        e.preventDefault();
+    const handleSendFile = async () => {
         const form_data = new FormData();
 
         try {
@@ -56,9 +57,7 @@ export default function App() {
         }
     }
 
-    const handleSendUrl = async (e) => {
-        e.preventDefault();
-
+    const handleSendUrl = async () => {
         try {
             setLoader(true);
 
@@ -112,42 +111,40 @@ export default function App() {
         <div className="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
             <div
                 className="card shadow py-4 px-4 d-flex justify-between"
-                style={{ backgroundColor: '#9681EB', maxWidth: '500px', width: '100%', transition: 'all 0.3s ease-in-out' }}
+                style={{
+                    backgroundColor: '#9681EB',
+                    maxWidth: '500px',
+                    width: '100%',
+                    transition: 'all 0.3s ease-in-out'
+                }}
             >
                 <h2 className="text-center mb-5 mt-0 p-0 text-white">Generate Content</h2>
                 <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-                {activeTab === 'file' ?
-                    <TabContent
-                        loader={loader}
-                        page_url={page_url}
-                        filename={filename}
-                        activeTab={activeTab}
-                        handleFunc={handleSendFile}
-                        setValue={(e) => setFile(e.target.files[0])}
-                    /> :
-                    <TabContent
-                        loader={loader}
-                        page_url={page_url}
-                        filename={filename}
-                        activeTab={activeTab}
-                        handleFunc={handleSendUrl}
-                        setValue={(e) => setUrl(e.target.value)}
-                    />
-                }
+                <>
+                    {
+                        activeTab === 'file' ? <TabContent
+                            loader={loader}
+                            page_url={page_url}
+                            filename={filename}
+                            activeTab={activeTab}
+                            handleFunc={handleSendFile}
+                            setValue={(e) => setFile(e.target.files[0])}
+                        /> : <TabContent
+                            loader={loader}
+                            page_url={page_url}
+                            filename={filename}
+                            activeTab={activeTab}
+                            handleFunc={handleSendUrl}
+                            setValue={(e) => setUrl(e.target.value)}
+                        />
+                    }
+                </>
 
-                {
-                    filename !== "" && <>
-                        <button
-                            onClick={downloadFile}
-                            className='btn btn-dark mt-3 py-2 text-uppercase fw-bold'
-                            style={{ transition: 'all 1s linear ease-in-out', opacity: filename === '' ? 0 : 1 }}
-                        >Download</button>
-                    </>
-                }
+                {filename !== "" && <DownloadBtn downloadFile={downloadFile} filename={filename} />}
             </div>
 
-            <span className='text-info-emphasis'>* All files are set to be deleted every 10 minutes *</span>
+            <span className='mt-3' color='#000'>* All files are set to be deleted every 10 minutes *</span>
             <ToastContainer />
         </div>
     )
