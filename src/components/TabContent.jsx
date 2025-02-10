@@ -8,16 +8,25 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
     return (
         <div>
             <div className="mb-5 d-flex flex-column">
-                <label
-                    htmlFor="input"
-                    className="form-label text-white fw-bold text-uppercase"
-                >
-                    Upload HTML Template
-                </label>
                 {activeTab === "file" ?
-                    <FileInput setValue={setValue} />
-                    :
-                    <URLinput setValue={setValue} page_url={page_url} />
+                    <>
+                        <label
+                            htmlFor="input"
+                            className="form-label text-white fw-bold text-uppercase"
+                        >
+                            Upload HTML Template
+                        </label>
+                        <FileInput setValue={setValue} />
+                    </> :
+                    <>
+                        <label
+                            htmlFor="input"
+                            className="form-label text-white fw-bold text-uppercase"
+                        >
+                            Paste URL
+                        </label>
+                        <URLinput setValue={setValue} page_url={page_url} />
+                    </>
                 }
             </div>
             {filename === "" &&
@@ -31,7 +40,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
                         loader ? <>
                             <span className="spinner-grow spinner-grow-sm me-1" aria-hidden="true"></span>
                             <span role="status">Processing...</span>
-                        </> : <span className='text-uppercase fw-medium'>Generate from Template</span>
+                        </> : <span className='text-uppercase fw-medium'>Generate</span>
                     }
                 </button>
             }
