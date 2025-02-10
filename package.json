@@ -1,0 +1,42 @@
+{
+    "name": "html-to-pdf",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "description": "Easily transform your HTML templates or any webpage URL into a professional PDF document with our intuitive web app. Whether you're working with custom HTML designs or need to convert an existing webpage, our tool ensures high-quality, accurate, and print-ready PDFs in just a few clicks.",
+    "keywords": [
+        "HTML to PDF converter",
+        "Webpage to PDF",
+        "URL to PDF converter",
+        "Online PDF generator",
+        "Convert HTML to PDF",
+        "HTML template to PDF",
+        "PDF creation tool",
+        "Web-based PDF converte",
+        "Free HTML to PDF",
+        "PDF generator from URL"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-toastify": "^11.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@vitejs/plugin-react": "^4.2.1",
+        "axios": "^1.7.9",
+        "eslint": "^8.55.0",
+        "eslint-plugin-react": "^7.33.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.5",
+        "vite": "^5.0.8"
+    }
+}
