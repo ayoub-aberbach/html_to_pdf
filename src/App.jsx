@@ -11,7 +11,7 @@ import DownloadBtn from './components/DownloadBtn';
 
 
 const config = [
-    { headers: { "Content-Type": "application/json" } },
+    { headers: { "Content-Type": "application/json", "Accept": "application/json" } },
     { headers: { "Content-Type": "multipart/form-data" } },
 ];
 
@@ -66,11 +66,15 @@ export default function App() {
             const req = await axios.post(`${API_URL}/api/paste_url`, payload, config[0]);
             const res = req?.data;
 
-            setLoader(false);
-            setDndFile(res.filename);
-            alertMessage(res.message, "success");
-            setUrl("");
+            if (req?.status === 200) {
+                setUrl("");
+                setLoader(false);
+                setDndFile(res.filename);
+                alertMessage(res.message, "success");
+                return;
+            }
 
+            console.log(req?.data);
         } catch (error) {
             setLoader(false);
 
