@@ -144,7 +144,7 @@ export default function App() {
                 {filename !== "" && <DownloadBtn downloadFile={downloadFile} filename={filename} />}
             </div>
 
-            <span className='mt-3' color='#000'>* All files are set to be deleted every 10 minutes *</span>
+            <span className='mt-3 text-center' color='#000'>* All files are set to be deleted every 10 minutes *</span>
             <ToastContainer />
         </div>
     )
