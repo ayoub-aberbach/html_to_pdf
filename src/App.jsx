@@ -60,6 +60,12 @@ export default function App() {
     const handleSendUrl = async () => {
         try {
             setLoader(true);
+            
+            if (page_url === "") {
+                setLoader(false);
+                alertMessage("Paste a valid URL", "warning");
+                return;
+            }
 
             const payload = { "pageUrl": page_url };
 
@@ -74,7 +80,7 @@ export default function App() {
                 return;
             }
 
-            console.log(req?.data);
+            // console.log(req?.data);
         } catch (error) {
             setLoader(false);
 
