@@ -12,7 +12,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
                     <>
                         <label
                             htmlFor="input"
-                            className="form-label text-white fw-bold text-uppercase"
+                            className="form-label text-black fw-bold text-uppercase"
                         >
                             Upload HTML Template
                         </label>
@@ -21,7 +21,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
                     <>
                         <label
                             htmlFor="input"
-                            className="form-label text-white fw-bold text-uppercase"
+                            className="form-label text-black fw-bold text-uppercase"
                         >
                             Paste URL
                         </label>

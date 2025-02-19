@@ -42,7 +42,7 @@ export default function App() {
             setDndFile(res.filename);
             alertMessage(res.message, "success");
             setFile(null);
-            
+
         } catch (error) {
             setLoader(false);
 
@@ -130,25 +130,23 @@ export default function App() {
                 <h2 className="text-center mb-5 mt-0 p-0 text-black fw-bold fs-1 fst-italic">HTML TO PDF</h2>
                 <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-                <>
-                    {
-                        activeTab === 'file' ? <TabContent
-                            loader={loader}
-                            page_url={page_url}
-                            filename={filename}
-                            activeTab={activeTab}
-                            handleFunc={handleSendFile}
-                            setValue={(e) => setFile(e.target.files[0])}
-                        /> : <TabContent
-                            loader={loader}
-                            page_url={page_url}
-                            filename={filename}
-                            activeTab={activeTab}
-                            handleFunc={handleSendUrl}
-                            setValue={(e) => setUrl(e.target.value)}
-                        />
-                    }
-                </>
+                {
+                    activeTab === 'file' ? <TabContent
+                        loader={loader}
+                        page_url={page_url}
+                        filename={filename}
+                        activeTab={activeTab}
+                        handleFunc={handleSendFile}
+                        setValue={(e) => setFile(e.target.files[0])}
+                    /> : <TabContent
+                        loader={loader}
+                        page_url={page_url}
+                        filename={filename}
+                        activeTab={activeTab}
+                        handleFunc={handleSendUrl}
+                        setValue={(e) => setUrl(e.target.value)}
+                    />
+                }
 
                 {filename !== "" &&
                     <DownloadBtn filename={filename} downloadFile={downloadPDF} />
