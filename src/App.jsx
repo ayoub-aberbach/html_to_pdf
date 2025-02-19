@@ -4,10 +4,9 @@ import { ToastContainer } from 'react-toastify';
 
 import Tabs from './components/Tabs';
 import TabContent from './components/TabContent';
-
-import { API_URL } from './helpers/api_url';
-import { alertMessage } from './helpers/toastMsgs';
 import DownloadBtn from './components/DownloadBtn';
+
+import { alertMessage, API_URL } from './helpers/utils';
 
 
 const config = [
@@ -43,6 +42,7 @@ export default function App() {
             setDndFile(res.filename);
             alertMessage(res.message, "success");
             setFile(null);
+            
         } catch (error) {
             setLoader(false);
 
@@ -60,7 +60,7 @@ export default function App() {
     const handleSendUrl = async () => {
         try {
             setLoader(true);
-            
+
             if (page_url === "") {
                 setLoader(false);
                 alertMessage("Paste a valid URL", "warning");
@@ -80,7 +80,6 @@ export default function App() {
                 return;
             }
 
-            // console.log(req?.data);
         } catch (error) {
             setLoader(false);
 
@@ -96,7 +95,7 @@ export default function App() {
         }
     }
 
-    const downloadFile = async () => {
+    const downloadPDF = async () => {
         const file_url = `${API_URL}/invoices/${filename}`;
 
         try {
@@ -151,10 +150,12 @@ export default function App() {
                     }
                 </>
 
-                {filename !== "" && <DownloadBtn downloadFile={downloadFile} filename={filename} />}
+                {filename !== "" &&
+                    <DownloadBtn filename={filename} downloadFile={downloadPDF} />
+                }
             </div>
 
-            <span className='mt-3 text-center' color='#000'>* All files are set to be deleted every 10 minutes *</span>
+            <span className='mt-3 text-center text-white'>* All files are set to be deleted every 10 minutes *</span>
             <ToastContainer />
         </div>
     )

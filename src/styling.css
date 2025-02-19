@@ -1,15 +1,8 @@
-:root {
-    --primary: #000;
-    --secondary: #fff;
-    --gradient: linear-gradient(to bottom, var(--primary), var(--secondary));
-}
-
-
 body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background: var(--gradient);
+    background: #000;
 }
 
 input {
