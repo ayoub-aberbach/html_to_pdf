@@ -127,7 +127,7 @@ export default function App() {
                     transition: 'all 0.3s ease-in-out'
                 }}
             >
-                <h2 className="text-center mb-5 mt-0 p-0 text-white">Generate Content</h2>
+                <h2 className="text-center mb-5 mt-0 p-0 text-black fw-bold fs-1 fst-italic">HTML TO PDF</h2>
                 <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
                 <>
@@ -155,7 +155,7 @@ export default function App() {
                 }
             </div>
 
-            <span className='mt-3 text-center text-white'>* All files are set to be deleted every 10 minutes *</span>
+            <span className='text-center text-white mt-2'>* All files are set to be deleted every 10 minutes *</span>
             <ToastContainer />
         </div>
     )
