@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 function URLinput({ page_url, setValue }) {
     return (
         <input
-            type="text"
+            required
             id="input"
+            type="text"
             value={page_url}
             onChange={setValue}
+            pattern="https://.*"
             className="form-control"
-            placeholder="Webpage URL here"
+            placeholder="https://example.com"
         />
     )
 }
