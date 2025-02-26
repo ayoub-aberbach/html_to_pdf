@@ -75,12 +75,7 @@ export default function App() {
             const req = await axios.post(
                 `${API_URL}/api/paste_url`,
                 payload,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    }
-                },
+                { headers: { "Content-Type": "application/json" } }
             );
 
             const res = req?.data;
