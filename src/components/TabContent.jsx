@@ -32,7 +32,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
             {filename === "" &&
                 <button
                     type="button"
-                    className="btn btn-primary w-100 py-3"
+                    className="btn btn-light w-100 py-3"
                     onClick={handleFunc}
                     style={{ transition: 'transform 0.2s', hover: { transform: 'scale(1.05)' } }}
                 >
@@ -40,7 +40,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
                         loader ? <>
                             <span className="spinner-grow spinner-grow-sm me-1" aria-hidden="true"></span>
                             <span role="status">Processing...</span>
-                        </> : <span className='text-uppercase fw-medium'>Generate</span>
+                        </> : <span className='text-uppercase fw-bold fs-3'>Generate</span>
                     }
                 </button>
             }

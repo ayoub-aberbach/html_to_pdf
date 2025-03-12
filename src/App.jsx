@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 
@@ -6,7 +5,8 @@ import Tabs from './components/Tabs';
 import TabContent from './components/TabContent';
 import DownloadBtn from './components/DownloadBtn';
 
-import { alertMessage, API_URL } from './helpers/utils';
+import { alertMessage } from './helpers/utils';
+import { pdfDownload, SendFileReq, SendUrlReq } from './helpers/api';
 
 
 export default function App() {
@@ -30,23 +30,12 @@ export default function App() {
 
         try {
             setLoader(true);
-
-            const form_data = new FormData();
-            form_data.append("file", temp_file);
-
-            const req = await axios.post(`
-                ${API_URL}/api/upload_html`,
-                form_data,
-                { headers: { "Content-Type": "multipart/form-data" } },
-            );
-
-            const res = req.data;
+            const res = await SendFileReq(temp_file);
 
             setLoader(false);
             setDndFile(res.filename);
             alertMessage(res.message, "success");
             // setFile(null);
-
         } catch (error) {
             setLoader(false);
 
@@ -70,21 +59,13 @@ export default function App() {
 
         try {
             setLoader(true);
-            const payload = { "pageUrl": page_url };
+            const res = await SendUrlReq(page_url);
 
-            const req = await axios.post(
-                `${API_URL}/api/paste_url`,
-                payload,
-                { headers: { "Content-Type": "application/json" } }
-            );
-
-            const res = req?.data;
-
-            if (req?.status === 200) {
+            if (res?.status === 200) {
                 setUrl("");
                 setLoader(false);
-                setDndFile(res.filename);
-                alertMessage(res.message, "success");
+                setDndFile(res?.data.filename);
+                alertMessage(res?.data.message, "success");
                 return;
             }
 
@@ -103,25 +84,9 @@ export default function App() {
         }
     }
 
-    const downloadPDF = async () => {
-        const file_url = `${API_URL}/invoices/${filename}`;
-
-        try {
-            const response = await axios.get(file_url, { responseType: 'blob' });
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-
-            link.href = url;
-            link.download = filename;
-
-            document.body.appendChild(link);
-            link.click();
-
-            setDndFile("");
-            document.body.removeChild(link);
-        } catch (error) {
-            alertMessage(error.response?.data, "error");
-        }
+    const handlePdf = async () => {
+        await pdfDownload(filename);
+        setDndFile("");
     }
 
     return (
@@ -151,7 +116,7 @@ export default function App() {
                         />
                 }
 
-                {filename !== "" && <DownloadBtn filename={filename} downloadFile={downloadPDF} />}
+                {filename !== "" && <DownloadBtn filename={filename} downloadFile={handlePdf} />}
             </div>
 
             <span className='text-center text-white mt-2'>* All files are set to be deleted every 10 minutes *</span>
