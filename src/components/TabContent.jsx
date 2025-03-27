@@ -32,7 +32,7 @@ function TabContent({ activeTab, setValue, filename, handleFunc, loader, page_ur
             {filename === "" &&
                 <button
                     type="button"
-                    className="btn btn-light w-100 py-3"
+                    className="btn btn-light w-100 mainBtn"
                     onClick={handleFunc}
                     style={{ transition: 'transform 0.2s', hover: { transform: 'scale(1.05)' } }}
                 >
