@@ -7,6 +7,7 @@ import DownloadBtn from './components/DownloadBtn';
 
 import { alertMessage } from './helpers/utils';
 import { pdfDownload, SendFileReq, SendUrlReq } from './helpers/api';
+import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -117,6 +118,8 @@ export default function App() {
                 }
 
                 {filename !== "" && <DownloadBtn filename={filename} downloadFile={handlePdf} />}
+
+                <Footer />
             </div>
 
             <span className='text-center text-white mt-2'>* All files are set to be deleted every 10 minutes *</span>

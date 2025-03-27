@@ -15,3 +15,35 @@ input {
 .mainBtn {
     padding-top: .5rem;
 }
+
+footer p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #000;
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+
+footer a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #0366d6, #0550a8);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    background: linear-gradient(90deg, #0550a8, #0366d6);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+footer a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
