@@ -26,7 +26,7 @@ export const SendUrlReq = async (page_url) => {
 }
 
 export const pdfDownload = async (filename) => {
-    const file_url = `${API_URL}/invoices/${filename}`;
+    const file_url = `${API_URL}/pdfs/${filename}`;
 
     try {
         const response = await axios.get(file_url, { responseType: 'blob' });

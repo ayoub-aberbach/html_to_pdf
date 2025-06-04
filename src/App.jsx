@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 
 import Tabs from './components/Tabs';
+import Footer from "./components/Footer";
 import TabContent from './components/TabContent';
-import DownloadBtn from './components/DownloadBtn';
 
 import { alertMessage } from './helpers/utils';
 import { pdfDownload, SendFileReq, SendUrlReq } from './helpers/api';
-import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -90,13 +89,18 @@ export default function App() {
         setDndFile("");
     }
 
+    useEffect(() => {
+        if (filename.trim()) {
+            handlePdf();
+        };
+    }, [filename]);
+
     return (
         <div className="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
             <div
                 className="card shadow py-4 px-4 d-flex justify-between"
                 style={{ width: '100%', maxWidth: '500px', backgroundColor: '#9681EB', transition: 'all 0.3s ease-in-out' }}
             >
-                <h2 className="text-center mb-5 mt-0 p-0 text-black fw-bold fs-1 fst-italic">HTML TO PDF</h2>
                 <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
                 {
@@ -117,7 +121,7 @@ export default function App() {
                         />
                 }
 
-                {filename !== "" && <DownloadBtn filename={filename} downloadFile={handlePdf} />}
+                {/* {filename !== "" && <DownloadBtn filename={filename} downloadFile={handlePdf} />} */}
 
                 <Footer />
             </div>

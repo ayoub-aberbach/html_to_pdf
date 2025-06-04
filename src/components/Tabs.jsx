@@ -7,19 +7,15 @@ function Tabs({ activeTab, setActiveTab }) {
             <li className="nav-item w-50">
                 <button
                     onClick={() => setActiveTab('file')}
-                    style={{ transition: 'background-color 0.3s' }}
-                    className={`nav-link text-black w-100 text-uppercase ${activeTab === 'file' ? 'active' : ''}`}
-                >
-                    Upload File
+                    className={`nav-link text-white fw-bold w-100 text-uppercase ${activeTab === 'file' ? 'active bg-black' : ''}`}
+                >FILE
                 </button>
             </li>
             <li className="nav-item w-50">
                 <button
                     onClick={() => setActiveTab('url')}
-                    style={{ transition: 'background-color 0.3s' }}
-                    className={`nav-link text-black w-100 text-uppercase ${activeTab === 'url' ? 'active' : ''}`}
-                >
-                    Enter URL
+                    className={`nav-link text-white fw-bold w-100 text-uppercase ${activeTab === 'url' ? 'active bg-black' : ''}`}
+                >URL
                 </button>
             </li>
         </ul>
