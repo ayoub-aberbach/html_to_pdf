@@ -1,8 +1,39 @@
-# React + Vite
+# HTML To PDF 🧾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Easily transform your HTML templates or any webpage URL into a professional PDF document.**  
+Whether you're working with custom HTML designs or need to convert an existing webpage, this tool ensures high-quality, accurate, and print-ready PDFs in just a few clicks.
 
-Currently, two official plugins are available:
+🔗 [Live Demo](https://htmlto-pdf.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 📦 Tech Stack
+
+- **Frontend:** React, JavaScript, CSS, Bootstrap 5  
+- **Backend:** Node.js, Express.js  
+- **Hosting:** Netlify (Frontend), Render (Backend)
+
+---
+
+## ✨ Features
+
+- 📄 Convert local HTML files into high-quality PDF documents  
+- 🌐 Convert any webpage URL into a PDF  
+- 🎨 Preserves styles and layouts from both HTML files and webpages  
+- 🖨️ Print-ready output with professional formatting
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## ✅ Next Improvements
+
+- Add drag-and-drop support for HTML uploads
+
+- Provide custom PDF configuration (page size, margins, etc.)
+
+- Add history/download tracking
